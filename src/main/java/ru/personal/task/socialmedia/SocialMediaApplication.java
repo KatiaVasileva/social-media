@@ -1,4 +1,4 @@
-package ru.personal.test.socialmedia;
+package ru.personal.task.socialmedia;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
