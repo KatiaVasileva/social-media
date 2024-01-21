@@ -1,4 +1,4 @@
-package ru.personal.test.socialmedia;
+package ru.personal.task.socialmedia;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
