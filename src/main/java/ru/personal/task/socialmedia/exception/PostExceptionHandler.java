@@ -1,5 +1,6 @@
 package ru.personal.task.socialmedia.exception;
 
+import jakarta.security.auth.message.AuthException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -46,5 +47,10 @@ public class PostExceptionHandler {
     @ExceptionHandler
     public ResponseEntity<?> handleNotFoundException(FileNotFoundException exception) {
         return new ResponseEntity<>("Файл не найден", HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<?> handleAuthException(AuthException exception) {
+        return new ResponseEntity<>(exception.getMessage(), HttpStatus.FORBIDDEN);
     }
 }

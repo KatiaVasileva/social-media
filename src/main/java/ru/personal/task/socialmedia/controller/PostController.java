@@ -6,6 +6,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.personal.task.socialmedia.dto.CreateOrUpdatePost;
 import ru.personal.task.socialmedia.dto.PostDTO;
+import ru.personal.task.socialmedia.security.jwt.JwtAuthentication;
+import ru.personal.task.socialmedia.service.AuthService;
 import ru.personal.task.socialmedia.service.PostService;
 
 import java.util.List;
@@ -17,10 +19,12 @@ import java.util.List;
 public class PostController {
 
     private final PostService postService;
+    private final AuthService authService;
 
     @PostMapping("/new")
     public PostDTO createPost (@Valid @RequestBody CreateOrUpdatePost createOrUpdatePost) {
-        return postService.createPost(createOrUpdatePost);
+        final JwtAuthentication authInfo = authService.getAuthInfo();
+        return postService.createPost(createOrUpdatePost, authInfo);
     }
 
     @GetMapping("/all")

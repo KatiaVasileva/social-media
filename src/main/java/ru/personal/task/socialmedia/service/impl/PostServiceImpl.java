@@ -8,6 +8,7 @@ import ru.personal.task.socialmedia.entity.Post;
 import ru.personal.task.socialmedia.exception.PostNotFoundException;
 import ru.personal.task.socialmedia.mapper.PostMapper;
 import ru.personal.task.socialmedia.repository.PostRepository;
+import ru.personal.task.socialmedia.security.jwt.JwtAuthentication;
 import ru.personal.task.socialmedia.service.PostService;
 
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ public class PostServiceImpl implements PostService {
     private final PostMapper postMapper;
 
     @Override
-    public PostDTO createPost(CreateOrUpdatePost createOrUpdatePost) {
+    public PostDTO createPost(CreateOrUpdatePost createOrUpdatePost, JwtAuthentication authInfo) {
         Post post = new Post();
         postMapper.createOrUpdatePostToPost(createOrUpdatePost, post);
         postRepository.save(post);

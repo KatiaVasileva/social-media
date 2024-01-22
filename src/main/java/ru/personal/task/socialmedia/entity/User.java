@@ -27,6 +27,9 @@ public class User {
     @Column(name = "image_id")
     private long imageId;
 
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
 //    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 //    private List<Post> posts;
 
